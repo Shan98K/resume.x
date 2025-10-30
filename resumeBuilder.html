@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume.X</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background">
+      <video autoplay muted loop playsinline>
+        <source
+          src="./assets/Topographic_Design-BackgroundHD.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+
+    <div class="container">
+      <!-- Step Bar -->
+      <div class="step-bar">
+        <ul>
+          <li class="active" data-page="0">1</li>
+          <li data-page="1">2</li>
+          <li data-page="2">3</li>
+          <li data-page="3">4</li>
+          <li data-page="4">5</li>
+          <li data-page="5">6</li>
+          <li data-page="6">7</li>
+        </ul>
+      </div>
+
+      <!-- Form Pages -->
+      <section class="form-section" id="resume-content">
+        <!-- Page 1 -->
+        <div class="page active">
+          <h2>Basic Information</h2>
+          <div class="basicInfo">
+            <div class="basicInfoBasic">
+              <input
+                maxlength="50"
+                type="text"
+                placeholder="Full Name"
+                id="name" required
+              />
+              <input
+                maxlength="60"
+                type="text"
+                placeholder="Professional Title"
+                id="title" required
+              />
+              <div class="phone-wrapper">
+                <!-- <select id="country-code">
+                  <option value="in">🇮🇳</option>
+                  <option value="us">🇺🇸</option>
+                  <option value="gb">🇬🇧</option>
+                  <option value="ca">🇨🇦</option>
+                  <option value="au">🇦🇺</option>
+                </select>
+                <input type="tel" id="phone" /> -->
+                <div class="country-code">
+                  <div class="country-code_wm">+</div>
+                  <input class="country-code_input" maxlength="4" id="phone" type="tel" placeholder="CC" value="91" required />
+                </div>
+                <input class="phone" maxlength="15" id="phone" type="tel" placeholder="Phone No." required />
+              </div>
+              <input
+                maxlength="80"
+                type="email"
+                placeholder="Email"
+                id="email" required
+              />
+              <input
+                maxlength="80"
+                type="text"
+                placeholder="Location"
+                id="location"
+              />
+            </div>
+            <div class="pic">
+              <h4>Profile Picture</h4>
+              <div class="image-preview">
+                <img
+                  id="previewImg"
+                  src="./assets/ProfilePic.png"
+                  alt="Profile Picture"
+                />
+              </div>
+              <label class="upload-btn" for="uploadPic">Choose Image</label>
+              <input type="file" id="uploadPic" accept="image/*" hidden />
+            </div>
+          </div>
+          <div class="navigation">
+            <button class="nextBtn">Next ➜</button>
+          </div>
+        </div>
+
+        <!-- Pages 2–6 -->
+        <div class="page">
+          <h2>Education</h2>
+          <input maxlength="100" type="text" placeholder="Institution Name" />
+          <input
+            maxlength="60"
+            type="text"
+            placeholder="Degree / Qualification"
+          />
+          <input maxlength="10" type="text" placeholder="Year of Completion" />
+          <textarea
+            maxlength="400"
+            placeholder="Additional Details..."
+          ></textarea>
+          <div class="navigation">
+            <button class="backBtn">⬅ Back</button
+            ><button class="nextBtn">Next ➜</button>
+          </div>
+        </div>
+        <div class="page">
+          <h2>Experience</h2>
+          <input maxlength="100" type="text" placeholder="Company Name" /><input
+            maxlength="60"
+            type="text"
+            placeholder="Role / Position"
+          /><input maxlength="30" type="text" placeholder="Duration" /><textarea
+            maxlength="400"
+            placeholder="Describe your work..."
+          ></textarea>
+          <div class="navigation">
+            <button class="backBtn">⬅ Back</button
+            ><button class="nextBtn">Next ➜</button>
+          </div>
+        </div>
+        <div class="page">
+          <h2>Skills</h2>
+          <textarea
+            maxlength="400"
+            placeholder="List your technical or soft skills..."
+          ></textarea>
+          <div class="navigation">
+            <button class="backBtn">⬅ Back</button
+            ><button class="nextBtn">Next ➜</button>
+          </div>
+        </div>
+        <div class="page">
+          <h2>Projects</h2>
+          <input
+            maxlength="80"
+            type="text"
+            placeholder="Project Title"
+          /><textarea
+            maxlength="400"
+            placeholder="Describe your project..."
+          ></textarea>
+          <div class="navigation">
+            <button class="backBtn">⬅ Back</button
+            ><button class="nextBtn">Next ➜</button>
+          </div>
+        </div>
+        <div class="page">
+          <h2>Achievements</h2>
+          <textarea
+            maxlength="400"
+            placeholder="Write about your achievements..."
+          ></textarea>
+          <div class="navigation">
+            <button class="backBtn">⬅ Back</button
+            ><button class="nextBtn">Next ➜</button>
+          </div>
+        </div>
+
+        <!-- Page 7: Download -->
+        <div class="page">
+          <h2>Finish</h2>
+          <p>Review all your details, then download your resume as PDF.</p>
+          <button class="download-btn" id="downloadBtn">Download PDF</button>
+          <div class="navigation"><button class="backBtn">⬅ Back</button></div>
+        </div>
+      </section>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"></script>
+  </body>
+</html>
