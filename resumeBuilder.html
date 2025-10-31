@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume.X</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.min.css"
@@ -28,7 +31,6 @@
     </div>
 
     <div class="container">
-      <!-- Step Bar -->
       <div class="step-bar">
         <ul>
           <li class="active" data-page="0">1</li>
@@ -41,9 +43,7 @@
         </ul>
       </div>
 
-      <!-- Form Pages -->
       <section class="form-section" id="resume-content">
-        <!-- Page 1 -->
         <div class="page active">
           <h2>Basic Information</h2>
           <div class="basicInfo">
@@ -52,13 +52,15 @@
                 maxlength="50"
                 type="text"
                 placeholder="Full Name"
-                id="name" required
+                id="name"
+                required
               />
               <input
                 maxlength="60"
                 type="text"
                 placeholder="Professional Title"
-                id="title" required
+                id="title"
+                required
               />
               <div class="phone-wrapper">
                 <!-- <select id="country-code">
@@ -71,15 +73,31 @@
                 <input type="tel" id="phone" /> -->
                 <div class="country-code">
                   <div class="country-code_wm">+</div>
-                  <input class="country-code_input" maxlength="4" id="phone" type="tel" placeholder="CC" value="91" required />
+                  <input
+                    class="country-code_input"
+                    maxlength="4"
+                    id="phone"
+                    type="tel"
+                    placeholder="CC"
+                    value="91"
+                    required
+                  />
                 </div>
-                <input class="phone" maxlength="15" id="phone" type="tel" placeholder="Phone No." required />
+                <input
+                  class="phone"
+                  maxlength="15"
+                  id="phone"
+                  type="tel"
+                  placeholder="Phone No."
+                  required
+                />
               </div>
               <input
                 maxlength="80"
                 type="email"
                 placeholder="Email"
-                id="email" required
+                id="email"
+                required
               />
               <input
                 maxlength="80"
@@ -106,7 +124,6 @@
           </div>
         </div>
 
-        <!-- Pages 2–6 -->
         <div class="page">
           <h2>Education</h2>
           <input maxlength="100" type="text" placeholder="Institution Name" />
@@ -178,7 +195,6 @@
           </div>
         </div>
 
-        <!-- Page 7: Download -->
         <div class="page">
           <h2>Finish</h2>
           <p>Review all your details, then download your resume as PDF.</p>
@@ -188,21 +204,21 @@
       </section>
     </div>
 
-<script>
-  document.getElementById("goToResume")?.addEventListener("click", () => {
-    const data = {
-      name: document.getElementById("name")?.value || "",
-      title: document.getElementById("title")?.value || "",
-      phone: document.getElementById("phone")?.value || "",
-      email: document.getElementById("email")?.value || "",
-      location: document.getElementById("location")?.value || "",
-      image: document.getElementById("previewImg")?.src || "",
-    };
+    <script>
+      document.getElementById("goToResume")?.addEventListener("click", () => {
+        const data = {
+          name: document.getElementById("name")?.value || "",
+          title: document.getElementById("title")?.value || "",
+          phone: document.getElementById("phone")?.value || "",
+          email: document.getElementById("email")?.value || "",
+          location: document.getElementById("location")?.value || "",
+          image: document.getElementById("previewImg")?.src || "",
+        };
 
-    localStorage.setItem("resumeData", JSON.stringify(data));
-    window.location.href = "resume.html";
-  });
-</script>
+        localStorage.setItem("resumeData", JSON.stringify(data));
+        window.location.href = "resume.html";
+      });
+    </script>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"></script>

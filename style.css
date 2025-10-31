@@ -35,7 +35,6 @@ body {
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-
 .step-bar {
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: invert();
@@ -139,7 +138,7 @@ textarea:focus {
   transform: scale(1.01);
 }
 
-.phone-wrapper{
+.phone-wrapper {
   display: flex;
   width: 100%;
   gap: 20px;
@@ -158,7 +157,8 @@ textarea:focus {
   width: 60px;
 }
 
-.country-code , .country-code_input {
+.country-code,
+.country-code_input {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -171,14 +171,15 @@ textarea:focus {
   left: 5px;
 }
 
-.phone { flex: 1; }
+.phone {
+  flex: 1;
+}
 
 #phone {
   padding: 10px;
   font-size: 15px;
   background: transparent;
 }
-
 
 .navigation {
   display: flex;
@@ -330,7 +331,8 @@ button:active {
   font-weight: 500;
   cursor: pointer;
   text-shadow: 0 0 1px rgb(68, 68, 68);
-  transition: background-position 0.6s ease, transform 0.25s ease, filter 0.3s ease;
+  transition: background-position 0.6s ease, transform 0.25s ease,
+    filter 0.3s ease;
 }
 
 .upload-btn:hover {
@@ -343,10 +345,6 @@ button:active {
   transform: translateY(0);
   filter: brightness(0.95);
 }
-
-
-
-
 
 /* Responsive so that i can use it for my Github - karo hi karo */
 @media (max-width: 1024px) {

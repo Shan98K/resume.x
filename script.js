@@ -1,16 +1,7 @@
 document.getElementById("phone").addEventListener("input", (e) => {
-  e.target.value = e.target.value.replace(/[^0-9]/g, ""); // only digits allowed
+  e.target.value = e.target.value.replace(/[^0-9]/g, "");
 });
 
-
-
-
-
-
-
-
-
-// ================= PROFILE PICTURE UPLOAD =================
 const uploadPic = document.getElementById("uploadPic");
 const previewImg = document.getElementById("previewImg");
 
@@ -25,8 +16,6 @@ uploadPic.addEventListener("change", function () {
   }
 });
 
-
-// ================= STEP NAVIGATION =================
 const steps = document.querySelectorAll(".step-bar li");
 const pages = document.querySelectorAll(".page");
 let currentPage = 0;
@@ -43,7 +32,6 @@ steps.forEach((step) =>
   step.addEventListener("click", () => showPage(parseInt(step.dataset.page)))
 );
 
-// ================= NEXT & BACK BUTTONS =================
 document.querySelectorAll(".nextBtn").forEach((btn) =>
   btn.addEventListener("click", () => {
     const currentPageElement = pages[currentPage];
@@ -76,7 +64,6 @@ document.querySelectorAll(".backBtn").forEach((btn) =>
   })
 );
 
-// ================= WARNING POPUP =================
 function showWarning(msg) {
   const alertBox = document.createElement("div");
   alertBox.textContent = msg;
@@ -102,10 +89,6 @@ function showWarning(msg) {
   }, 2500);
 }
 
-
-
-// ================= Container Loading =================
-
 window.addEventListener("load", () => {
   const container = document.querySelector(".container");
 
@@ -117,23 +100,6 @@ window.addEventListener("load", () => {
       container.style.transition = "opacity 0.8s ease, transform 0.8s ease";
       container.style.opacity = "1";
       container.style.transform = "translateY(0)";
-    }, 300); // delay in ms (0.3s)
+    }, 300);
   }
 });
-
-
-// PDF Download using html2pdf
-// document.getElementById("downloadBtn").addEventListener("click", () => {
-//   const element = document.getElementById("resume-content");
-//   const opt = {
-//     margin: 0.5,
-//     filename: "My_Resume.pdf",
-//     image: { type: "jpeg", quality: 0.98 },
-//     html2canvas: { scale: 2 },
-//     jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
-//   };
-//   html2pdf().set(opt).from(element).save();
-// });
-
-
-

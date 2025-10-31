@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (!data) return;
 
-  document.querySelectorAll("[data-field]").forEach(el => {
+  document.querySelectorAll("[data-field]").forEach((el) => {
     const key = el.getAttribute("data-field");
     if (data[key]) el.textContent = data[key];
   });

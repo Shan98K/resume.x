@@ -1,112 +1,370 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Resume — Bold Sidebar</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
-<style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;background:#f3f4f6;padding:36px;display:flex;justify-content:center}
-  .toolbar{width:900px;display:flex;justify-content:flex-end;gap:8px;margin-bottom:12px}
-  button,select{padding:8px 12px;border-radius:6px;border:1px solid #ddd;background:#fff;cursor:pointer}
-  .wrap{width:900px}
-  .paper{background:#fff;width:900px;height:auto;border-radius:8px;overflow:hidden;box-shadow:0 6px 30px rgba(0,0,0,.08);display:flex}
-  .left{width:260px;background:linear-gradient(180deg,#0ea5a4,#0f766e);color:white;padding:28px;display:flex;flex-direction:column;align-items:center;gap:10px}
-  .left img{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-bottom:10px}
-  .left h2{font-size:20px;margin-bottom:6px;text-align:center}
-  .left p{font-size:13px;opacity:.95;text-align:center}
-  .accent{height:8px;background:#06b6d4;border-radius:4px;margin:14px 0;width:100%}
-  .right{flex:1;padding:28px}
-  .name{font-size:28px;font-weight:800;color:#0f172a}
-  h3{margin-top:14px;color:#0f172a}
-  section{margin-top:12px}
-  p,li{color:#334155;line-height:1.5}
-  ul{padding-left:18px}
-  /* make only text editable */
-  .paper *{pointer-events:none}
-  .paper [contenteditable]{pointer-events:auto;outline:none}
-  .paper [contenteditable]:focus{background:#f0f9ff;border-radius:4px;padding:2px}
-</style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="toolbar">
-      <select id="format">
-        <option value="pdf">PDF</option>
-        <option value="jpg">JPG</option>
-      </select>
-      <button id="download">Download</button>
-    </div>
-
-    <div id="paper" class="paper">
-      <div class="left">
-        <img id="profileImage" src="./assets/ProfilePic.png" alt="Profile Picture">
-        <h2 contenteditable="true" data-field="name">Your Name</h2>
-        <p contenteditable="true" data-field="title">Product Designer</p>
-        <div class="accent"></div>
-        <p contenteditable="true" data-field="email">you@example.com</p>
-        <p contenteditable="true" data-field="phone">+91 98765 43210</p>
-        <p contenteditable="true" data-field="location">City, Country</p>
-        <h3 style="margin-top:20px">Skills</h3>
-        <p contenteditable="true">UI/UX, Figma, React, HTML/CSS, Prototyping</p>
-        <h3 style="margin-top:20px">Languages</h3>
-        <p contenteditable="true">English, Hindi</p>
-      </div>
-
-      <div class="right">
-        <div class="name" contenteditable="true" data-field="name">Your Fullname Here</div>
-        <div style="margin-top:6px;color:#64748b" contenteditable="true" data-field="title">Senior Product Designer — crafting intuitive interfaces</div>
-
-        <section>
-          <h3>Summary</h3>
-          <p contenteditable="true">Experienced product designer with 5+ years building delightful user experiences for web and mobile products.</p>
-        </section>
-
-        <section>
-          <h3>Experience</h3>
-          <ul>
-            <li contenteditable="true"><strong>Company A</strong> — Lead Designer (2021–Present). Focused on cross-platform experiences.</li>
-            <li contenteditable="true"><strong>Company B</strong> — Product Designer (2018–2021).</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Education</h3>
-          <p contenteditable="true">B.Des — Design University (2014–2018)</p>
-        </section>
-      </div>
-    </div>
-  </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script>
-  const btn = document.getElementById('download');
-  const format = document.getElementById('format');
-  const paper = document.getElementById('paper');
-
-  btn.addEventListener('click', async ()=>{
-    btn.textContent='Generating...';
-    try {
-      const canvas = await html2canvas(paper, {scale:2, useCORS:true, backgroundColor:'#ffffff'});
-      const data = canvas.toDataURL('image/png');
-      if(format.value==='jpg'){
-        const link = document.createElement('a');
-        link.download = 'resume.jpg';
-        link.href = data;
-        link.click();
-      } else {
-        const pdf = new jspdf.jsPDF({unit:'px', format:[canvas.width, canvas.height]});
-        pdf.addImage(data,'PNG',0,0,canvas.width, canvas.height);
-        pdf.save('resume.pdf');
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Resume — Bold Sidebar</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-    } catch(e){ alert('Export failed'); console.error(e) }
-    btn.textContent='Download';
-  });
-</script>
+      body {
+        font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial;
+        background: #f3f4f6;
+        padding: 36px;
+        display: flex;
+        justify-content: center;
+      }
+      .toolbar {
+        width: 900px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      button,
+      select {
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        background: #fff;
+        cursor: pointer;
+      }
+      .wrap {
+        width: 900px;
+      }
+      .paper {
+        background: #fff;
+        width: 900px;
+        height: auto;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+        display: flex;
+      }
+      .left {
+        width: 260px;
+        background: linear-gradient(180deg, #0ea5a4, #0f766e);
+        color: white;
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .left img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #fff;
+        margin-bottom: 10px;
+      }
+      .left h2 {
+        font-size: 20px;
+        margin-bottom: 6px;
+        text-align: center;
+      }
+      .left p {
+        font-size: 13px;
+        opacity: 0.95;
+        text-align: center;
+      }
+      .accent {
+        height: 8px;
+        background: #06b6d4;
+        border-radius: 4px;
+        margin: 14px 0;
+        width: 100%;
+      }
+      .right {
+        flex: 1;
+        padding: 28px;
+      }
+      .name {
+        font-size: 28px;
+        font-weight: 800;
+        color: #0f172a;
+      }
+      h3 {
+        margin-top: 14px;
+        color: #0f172a;
+      }
+      section {
+        margin-top: 12px;
+      }
+      p,
+      li {
+        color: #334155;
+        line-height: 1.5;
+      }
+      ul {
+        padding-left: 18px;
+      }
+      .paper * {
+        pointer-events: none;
+      }
+      .paper [contenteditable] {
+        pointer-events: auto;
+        outline: none;
+      }
+      .paper [contenteditable]:focus {
+        background: #f0f9ff;
+        border-radius: 4px;
+        padding: 2px;
+      }
+      @media (max-width: 600px) {
+        #format {
+          display: none;
+        }
+        body {
+          padding: 12px;
+        }
+        .wrap,
+        .paper {
+          width: 100%;
+          flex-direction: column;
+        }
+        .left {
+          width: 100%;
+          align-items: flex-start;
+          border-radius: 8px 8px 0 0;
+        }
+        .left img {
+          margin: auto;
+        }
+        .right {
+          padding: 16px;
+        }
+        .toolbar {
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+      }
 
-<!-- link to shared data file -->
-<script src="link.js"></script>
-</body>
+      @media (min-width: 601px) and (max-width: 1024px) {
+        .wrap,
+        .paper {
+          width: 100%;
+        }
+        .left {
+          width: 35%;
+        }
+        .right {
+          width: 65%;
+          padding: 20px;
+        }
+        .toolbar {
+          width: 100%;
+          justify-content: flex-end;
+        }
+      }
+
+      @media (min-width: 1025px) {
+        .wrap,
+        .paper {
+          width: 900px;
+        }
+        .left {
+          width: 260px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="toolbar">
+        <select id="format">
+          <option value="pdf">PDF</option>
+          <option value="jpg">JPG</option>
+        </select>
+        <button id="download">Download</button>
+      </div>
+
+      <div id="paper" class="paper">
+        <div class="left">
+          <img
+            id="profileImage"
+            src="./assets/ProfilePic.png"
+            alt="Profile Picture"
+          />
+          <h2 contenteditable="true" data-field="name">Your Name</h2>
+          <p contenteditable="true" data-field="title">Product Designer</p>
+          <div class="accent"></div>
+          <p contenteditable="true" data-field="email">you@example.com</p>
+          <p contenteditable="true" data-field="phone">+91 98765 43210</p>
+          <p contenteditable="true" data-field="location">City, Country</p>
+          <h3 style="margin-top: 20px">Skills</h3>
+          <p contenteditable="true">
+            UI/UX, Figma, React, HTML/CSS, Prototyping
+          </p>
+          <h3 style="margin-top: 20px">Languages</h3>
+          <p contenteditable="true">English, Hindi</p>
+        </div>
+
+        <div class="right">
+          <div class="name" contenteditable="true" data-field="name">
+            Your Fullname Here
+          </div>
+          <div
+            style="margin-top: 6px; color: #64748b"
+            contenteditable="true"
+            data-field="title"
+          >
+            Senior Product Designer — crafting intuitive interfaces
+          </div>
+
+          <section>
+            <h3>Summary</h3>
+            <p contenteditable="true">
+              Experienced product designer with 5+ years building delightful
+              user experiences for web and mobile products.
+            </p>
+          </section>
+
+          <section>
+            <h3>Experience</h3>
+            <ul>
+              <li contenteditable="true">
+                <strong>Company A</strong> — Lead Designer (2021–Present).
+                Focused on cross-platform experiences.
+              </li>
+              <li contenteditable="true">
+                <strong>Company B</strong> — Product Designer (2018–2021).
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Education</h3>
+            <p contenteditable="true">B.Des — Design University (2014–2018)</p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+      const btn = document.getElementById("download");
+      const format = document.getElementById("format");
+      const paper = document.getElementById("paper");
+
+      function updateFormatOptions() {
+        const jpgOption = format.querySelector('option[value="jpg"]');
+        if (window.innerWidth <= 600) {
+          jpgOption.disabled = true;
+          format.value = "pdf";
+        } else {
+          jpgOption.disabled = false;
+        }
+      }
+      updateFormatOptions();
+      window.addEventListener("resize", updateFormatOptions);
+
+      btn.addEventListener("click", async () => {
+        btn.textContent = "Generating...";
+
+        try {
+          const width = window.innerWidth;
+          let orientation = "landscape";
+          let pdfFormat = [841.89, 595.28];
+          let margin = 40;
+
+          if (width <= 600) {
+            orientation = "portrait";
+            pdfFormat = [595.28, 841.89];
+            margin = 30;
+          }
+
+          const canvas = await html2canvas(paper, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff",
+            windowWidth: paper.scrollWidth,
+            windowHeight: paper.scrollHeight,
+          });
+
+          const imgData = canvas.toDataURL("image/png");
+
+          if (format.value === "pdf" || width <= 600) {
+            const pdf = new jspdf.jsPDF({
+              orientation: orientation,
+              unit: "pt",
+              format: pdfFormat,
+            });
+
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+
+            const imgRatio = canvas.width / canvas.height;
+            const pageRatio = pageWidth / pageHeight;
+
+            let imgWidth, imgHeight;
+            if (imgRatio > pageRatio) {
+              imgWidth = pageWidth - margin * 2;
+              imgHeight = imgWidth / imgRatio;
+            } else {
+              imgHeight = pageHeight - margin * 2;
+              imgWidth = imgHeight * imgRatio;
+            }
+
+            const x = (pageWidth - imgWidth) / 2;
+            const y = (pageHeight - imgHeight) / 2;
+
+            pdf.addImage(imgData, "PNG", x, y, imgWidth, imgHeight);
+            pdf.save("resume.pdf");
+          } else if (format.value === "jpg") {
+            const outCanvas = document.createElement("canvas");
+            const ctx = outCanvas.getContext("2d");
+
+            const targetWidth = 1754;
+            const targetHeight = 1240;
+            outCanvas.width = targetWidth;
+            outCanvas.height = targetHeight;
+
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, targetWidth, targetHeight);
+
+            const imgRatio = canvas.width / canvas.height;
+            const pageRatio = targetWidth / targetHeight;
+
+            let drawWidth, drawHeight;
+            if (imgRatio > pageRatio) {
+              drawHeight = targetHeight - margin * 2;
+              drawWidth = drawHeight * imgRatio;
+            } else {
+              drawWidth = targetWidth - margin * 2;
+              drawHeight = drawWidth / imgRatio;
+            }
+
+            const x = (targetWidth - drawWidth) / 2;
+            const y = (targetHeight - drawHeight) / 2;
+
+            ctx.drawImage(canvas, x, y, drawWidth, drawHeight);
+
+            const finalImg = outCanvas.toDataURL("image/jpeg", 1.0);
+            const link = document.createElement("a");
+            link.download = "resume.jpg";
+            link.href = finalImg;
+            link.click();
+          }
+        } catch (e) {
+          alert("Export failed");
+          console.error(e);
+        }
+
+        btn.textContent = "Download";
+      });
+    </script>
+
+    <script src="link.js"></script>
+  </body>
 </html>
