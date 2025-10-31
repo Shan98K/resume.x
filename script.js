@@ -11,22 +11,20 @@ document.getElementById("phone").addEventListener("input", (e) => {
 
 
 // ================= PROFILE PICTURE UPLOAD =================
-const uploadInput = document.getElementById("uploadPic");
+const uploadPic = document.getElementById("uploadPic");
 const previewImg = document.getElementById("previewImg");
-const defaultIcon = document.getElementById("defaultIcon");
 
-uploadInput.addEventListener("change", function () {
+uploadPic.addEventListener("change", function () {
   const file = this.files[0];
   if (file) {
     const reader = new FileReader();
-    reader.onload = (e) => {
+    reader.onload = function (e) {
       previewImg.src = e.target.result;
-      previewImg.style.display = "block";
-      if (defaultIcon) defaultIcon.style.display = "none";
     };
     reader.readAsDataURL(file);
   }
 });
+
 
 // ================= STEP NAVIGATION =================
 const steps = document.querySelectorAll(".step-bar li");

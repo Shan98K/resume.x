@@ -182,11 +182,27 @@
         <div class="page">
           <h2>Finish</h2>
           <p>Review all your details, then download your resume as PDF.</p>
-          <button class="download-btn" id="downloadBtn">Download PDF</button>
+          <button class="download-btn" id="goToResume">Go to Resume</button>
           <div class="navigation"><button class="backBtn">⬅ Back</button></div>
         </div>
       </section>
     </div>
+
+<script>
+  document.getElementById("goToResume")?.addEventListener("click", () => {
+    const data = {
+      name: document.getElementById("name")?.value || "",
+      title: document.getElementById("title")?.value || "",
+      phone: document.getElementById("phone")?.value || "",
+      email: document.getElementById("email")?.value || "",
+      location: document.getElementById("location")?.value || "",
+      image: document.getElementById("previewImg")?.src || "",
+    };
+
+    localStorage.setItem("resumeData", JSON.stringify(data));
+    window.location.href = "resume.html";
+  });
+</script>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"></script>

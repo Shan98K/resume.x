@@ -13,7 +13,7 @@ body {
   align-items: center;
   height: 100dvh;
   overflow: hidden;
-  background: linear-gradient(135deg, #007bff, #00d4ff);
+  background: linear-gradient(135deg, rgb(74, 74, 74), rgb(35, 35, 35));
 }
 
 .background video {
@@ -23,7 +23,7 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  background: linear-gradient(135deg, #007bff, #00d4ff);
+  background: linear-gradient(135deg, rgb(74, 74, 74), rgb(35, 35, 35));
 }
 
 .intro {
@@ -125,24 +125,46 @@ body {
   opacity: 1;
 }
 
+.bgFixed{
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  left: 50%;
+  transform: scale(1.75);
+}
+
+#bgFixedPart{
+  position: absolute;
+  z-index: 0;
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.25), transparent);
+  border-radius: 30% / 30%;
+  transform: skewY(45deg);
+}
+
+.bgFixedPart1 { width: 100px; height: 200px; top: 0%; right: 100%; transform: translateX(50%); }
+.bgFixedPart2 { width: 75px; height: 150px; bottom: 50%; left: 25%; }
+.bgFixedPart3 { width: 50px; height: 100px; top: 100%; left: 45%; }
+
 .h1Container h1 {
   font-size: clamp(2rem, 5vw, 3.75rem);
   cursor: default;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  align-items: start;
+  justify-content: bottom;
+  height: 75px;
+  gap: 20px;
 }
 
 .sliding-words {
   display: inline-block;
   overflow: hidden;
-  text-align: start;
+  height: 75px;
+  text-align: center;
   vertical-align: bottom;
 }
 .sliding-words span {
   display: block;
-  text-align: start;
+  text-align: center;
   animation: slideUp 12s cubic-bezier(0.77, 0, 0.175, 1) infinite;
 }
 @keyframes slideUp {
@@ -219,12 +241,13 @@ body {
 }
 
 .pContainer p span {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
+  position: absolute;
+  left: 10px;
   background: radial-gradient(circle at center, #00ff7f 30%, #009933 100%);
   display: inline-block;
-  margin-right: 10px;
   box-shadow: 0 0 15px #00ff7f, 0 0 30px #00ff7f, 0 0 45px #00ff7f;
   animation: pulseGlow 1.8s ease-in-out infinite;
   transition: all 0.3s ease;
@@ -357,7 +380,7 @@ body {
 
 .shareContainer a:hover img{
   transform: scale(1.25) translateY(-10px);
-  filter: invert();
+  filter: invert() drop-shadow(0 2px 2px black);
 }
 .shareContainer a:active img{
   transition: 0s;
@@ -386,16 +409,19 @@ body {
     padding-inline: 20px;
   }
   .h1Container h1 {
-    font-size: 2.2rem;
+    font-size: clamp(1.45rem, 5vw, 1.75rem);
     text-align: center;
   }
   .sliding-words {
-    height: 3.5rem;
+    height: 2.5rem;
     text-align: center;
   }
   .pContainer {
     width: 90%;
     margin-bottom: 40px;
+  }
+  .pContainer p {
+    font-size: clamp(0.8rem, 5vw, 0.9rem);
   }
   .buttonContainer {
     transform: scale(1.1);
@@ -406,16 +432,20 @@ body {
   .container {
     padding-inline: 20px;
   }
+  .bgFixed{ transform: scale(1.25); }
   .h1Container h1 {
-    font-size: 1.8rem;
+    font-size: clamp(0.95rem, 5vw, 1.15rem);
     text-align: center;
+    gap: 5px;
+    margin-bottom: -50px;
   }
   .sliding-words {
-    height: 2.8rem;
+    height: 25px;
     text-align: center;
   }
   .pContainer p {
-    font-size: 0.85rem;
+    width: 75%;
+    font-size: clamp(0.5rem, 5vw, 0.55rem);
     padding-inline: 12px;
   }
   .buttonContainer {
@@ -450,7 +480,16 @@ body {
     gap: 10px;
   }
   .companyContainer img {
-    width: 60px;
+    width: 50px;
+  }
+}
+
+@media (max-width: 325px) {
+  .companyContainer {
+    gap: 5px;
+  }
+  .companyContainer img {
+    width: 40px;
   }
 }
 
