@@ -26,7 +26,6 @@ body {
   background: linear-gradient(135deg, #007bff, #00d4ff);
 }
 
-/* ===== INTRO SECTION ===== */
 .intro {
   inset: 0;
   position: fixed;
@@ -103,7 +102,6 @@ body {
   }
 }
 
-/* ===== CONTAINER SECTION ===== */
 .container {
   width: 100vw;
   height: 100dvh;
@@ -127,47 +125,34 @@ body {
   opacity: 1;
 }
 
-/* ===== SLIDING TEXTS ===== */
 .h1Container h1 {
-  font-size: 3.75rem;
+  font-size: clamp(2rem, 5vw, 3.75rem);
   cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .sliding-words {
   display: inline-block;
   overflow: hidden;
-  height: 5.565rem;
   text-align: start;
   vertical-align: bottom;
-  margin-left: 0.2rem;
 }
 .sliding-words span {
   display: block;
+  text-align: start;
   animation: slideUp 12s cubic-bezier(0.77, 0, 0.175, 1) infinite;
 }
 @keyframes slideUp {
-  0%,
-  15% {
-    transform: translateY(0%);
-  }
-  25%,
-  40% {
-    transform: translateY(-100%);
-  }
-  50%,
-  65% {
-    transform: translateY(-200%);
-  }
-  75%,
-  90% {
-    transform: translateY(-300%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
+  0%, 20% { transform: translateY(0); }
+  25%, 45% { transform: translateY(-100%); }
+  50%, 70% { transform: translateY(-200%); }
+  75%, 95% { transform: translateY(-300%); }
+  100% { transform: translateY(0); }
 }
 
-/* ===== FADE-IN PARAGRAPHS ===== */
 .pContainer {
   display: flex;
   align-items: center;
@@ -233,7 +218,6 @@ body {
   }
 }
 
-/* ===== DOT ANIMATION ===== */
 .pContainer p span {
   width: 8px;
   height: 8px;
@@ -260,7 +244,6 @@ body {
   }
 }
 
-/* ===== BUTTON ===== */
 .buttonContainer {
   display: flex;
   align-items: center;
