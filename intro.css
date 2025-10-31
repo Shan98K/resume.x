@@ -323,8 +323,8 @@ body {
 .companyContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 20px;
   padding: 10px;
 }
@@ -340,6 +340,48 @@ body {
   filter: grayscale(0%);
   transform: scale(1.125);
 }
+
+
+
+
+.shareContainer {
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.shareContainer a , .shareContainer a img{
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.shareContainer a:nth-child(2) {
+  transform: scale(1.1);
+}
+
+.shareContainer a:last-child {
+  transform: scale(1.45);
+}
+
+.shareContainer a:hover img{
+  transform: scale(1.25) translateY(-10px);
+  filter: invert();
+}
+.shareContainer a:active img{
+  transition: 0s;
+  filter: invert(0);
+}
+
+
 
 @media (max-width: 1024px) {
   .container {
@@ -427,4 +469,29 @@ body {
   .companyContainer img {
     width: 60px;
   }
+}
+
+.checkSS {
+  padding-block: 2px;
+  padding-inline: 10px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgb(179, 179, 179);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.checkSS a {
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 0 1.5px black;
+  font-weight: bold;
+}
+.checkSS:hover {
+  border-radius: 10px;
+  background: grey;
+}
+.checkSS:active {
+  background: rgba(0, 0, 0, 0.3);
+  transition: 0s;
 }
