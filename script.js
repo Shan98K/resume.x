@@ -1,6 +1,10 @@
-document.getElementById("phone").addEventListener("input", (e) => {
-  e.target.value = e.target.value.replace(/[^0-9]/g, "");
+// For both inputs: allow only digits
+["countryCode", "phoneNumber"].forEach(id => {
+  document.getElementById(id).addEventListener("input", (e) => {
+    e.target.value = e.target.value.replace(/[^0-9]/g, "");
+  });
 });
+
 
 const uploadPic = document.getElementById("uploadPic");
 const previewImg = document.getElementById("previewImg");
